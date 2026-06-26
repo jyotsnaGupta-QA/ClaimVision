@@ -89,6 +89,76 @@ class ImageProcessor:
             0
         )
 
+    def detect_edges(
+        self,
+        image,
+        threshold1=50,
+        threshold2=150
+    ):
+        """
+        Detect edges using Canny Edge Detection.
+        """
+
+        return cv2.Canny(
+            image,
+            threshold1,
+            threshold2
+        )
+
+    def detect_contours(
+        self,
+        edge_image
+    ):
+        """
+        Detect contours from edge image.
+        """
+
+        contours, _ = cv2.findContours(
+            edge_image,
+            cv2.RETR_EXTERNAL,
+            cv2.CHAIN_APPROX_SIMPLE
+        )
+
+        return contours
+
+    def detect_damage_regions(
+        self,
+        image,
+        min_area=500
+    ):
+        """
+        Detect possible damage regions by filtering contours
+        and drawing bounding boxes.
+        """
+
+        output = image.copy()
+
+        gray = self.convert_to_gray(output)
+
+        blurred = self.remove_noise(gray)
+
+        edges = self.detect_edges(blurred)
+
+        contours = self.detect_contours(edges)
+
+        for contour in contours:
+
+            area = cv2.contourArea(contour)
+
+            if area >= min_area:
+
+                x, y, w, h = cv2.boundingRect(contour)
+
+                cv2.rectangle(
+                    output,
+                    (x, y),
+                    (x + w, y + h),
+                    (0, 255, 0),
+                    2
+                )
+
+        return output
+
     def save_image(
         self,
         image,
@@ -121,9 +191,18 @@ class ImageProcessor:
 
         blurred_image = self.remove_noise(gray_image)
 
+        edges = self.detect_edges(blurred_image)
+
+        contours = self.detect_contours(edges)
+
+        damage_regions = self.detect_damage_regions(image)
+
         return {
             "original": image,
             "rgb": rgb_image,
             "gray": gray_image,
-            "blurred": blurred_image
+            "blurred": blurred_image,
+            "edges": edges,
+            "contours": contours,
+            "damage_regions": damage_regions
         }
