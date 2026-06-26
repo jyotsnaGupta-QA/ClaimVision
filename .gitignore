@@ -1,0 +1,28 @@
+# Virtual Environment
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Environment
+.env
+
+# VS Code
+.vscode/
+
+# Pytest
+.pytest_cache/
+
+# MyPy
+.mypy_cache/
+
+# Logs
+*.log
+
+# Upload folder contents
+uploads/*
+!uploads/.gitkeep
+
+# Generated edge detection images
+sample_data/edges_*.jpg
