@@ -1,29 +1,77 @@
 from pathlib import Path
 
-from ai.image_processor import ImageProcessor
+import cv2
+
 from ai.damage_detector import DamageDetector
+from ai.image_processor import ImageProcessor
 
 
-processor = ImageProcessor()
-detector = DamageDetector()
+def test_damage_detector():
 
-image_path = Path("sample_data") / "car1.webp"
+    processor = ImageProcessor()
+    detector = DamageDetector()
 
-processed = processor.preprocess(image_path)
+    image_path = Path("sample_data") / "car1.webp"
 
-# Detect edges
-edges = detector.detect_edges(
-    processed["blurred"]
-)
+    # Load and preprocess image
+    result = processor.preprocess(image_path)
 
-print("Edge Detection Successful!")
+    # Analyze damage
+    analysis = detector.analyze_damage(
+        result["original"]
+    )
 
-print("Edge Image Shape:", edges.shape)
+    # Verify results
+    assert analysis is not None
+    assert "processed_image" in analysis
+    assert "damages" in analysis
 
-# Save edge image
-processor.save_image(
-    edges,
-    "sample_data/edges_car1.jpg"
-)
+    processed_image = analysis["processed_image"]
+    damages = analysis["damages"]
 
-print("Edge image saved successfully.")
+    assert processed_image is not None
+    assert isinstance(damages, list)
+
+    # Save output image
+    output_path = Path("sample_data") / "damage_analysis_car1.jpg"
+
+    processor.save_image(
+        processed_image,
+        str(output_path)
+    )
+
+    assert output_path.exists()
+
+    print("\n===== Damage Detection Result =====")
+
+    if damages:
+
+        for damage in damages:
+
+            print(
+                f"Damage #{damage['damage_id']}"
+            )
+
+            print(
+                f"Area      : {damage['area']:.2f}"
+            )
+
+            print(
+                f"Location  : ({damage['x']}, {damage['y']})"
+            )
+
+            print(
+                f"Size      : {damage['width']} x {damage['height']}"
+            )
+
+            print(
+                f"Severity  : {damage['severity']}"
+            )
+
+            print("------------------------------")
+
+    else:
+
+        print("No significant damage regions detected.")
+
+    print("\n✅ Damage Detector Test Passed!")
