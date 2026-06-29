@@ -119,3 +119,26 @@ class DamageDetector:
             return "Medium"
 
         return "High"
+
+    def draw_contours(
+        self,
+        original_image,
+        contours,
+        color=(0, 255, 0),
+        thickness=2,
+    ):
+        """
+        Draw contours on the original image.
+        """
+
+        output = original_image.copy()
+
+        cv2.drawContours(
+            output,
+            contours,
+            -1,
+            color,
+            thickness,
+        )
+
+        return output
