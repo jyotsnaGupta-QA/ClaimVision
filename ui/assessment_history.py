@@ -63,6 +63,6 @@ def show_assessment_history():
 
         st.divider()
 
-st.caption(
-    "🚗 ClaimVision v1.0 | AI-Powered Vehicle Damage Assessment | © 2026"
+        st.caption(
+            "🚗 ClaimVision v1.0 | AI-Powered Vehicle Damage Assessment | © 2026"
 )
