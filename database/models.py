@@ -89,4 +89,9 @@ class DamageAssessment(Base):
     Recommendation = Column(NVARCHAR(200))
     Confidence = Column(Float)
 
+    ProcessedImagePath = Column(NVARCHAR(300))
+    CreatedDate = Column(DateTime,server_default=func.now())
+
     claim = relationship("Claim", back_populates="assessments")
+    
+  

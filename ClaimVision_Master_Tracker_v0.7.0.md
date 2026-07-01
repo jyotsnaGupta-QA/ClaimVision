@@ -1,110 +1,205 @@
-# 🚗 ClaimVision -- Master Project Tracker
+# 🚗 ClaimVision — Master Project Tracker
 
 ## Project Information
 
--   **Project Name:** ClaimVision -- AI-Powered Vehicle Damage
-    Assessment & Claim Intelligence
--   **Developer:** Jyotsna Gupta
--   **Technical Lead:** ChatGPT
--   **Current Version:** **v0.7.0**
--   **Current Sprint:** **Sprint 6 -- AI Integration**
--   **Status:** Active Development
--   **Last Updated:** 01 July 2026
+- **Project Name:** ClaimVision – AI-Powered Vehicle Damage Assessment & Claim Intelligence
+- **Developer:** Jyotsna Gupta
+- **Technical Lead:** ChatGPT
+- **Current Version:** **v0.8.0**
+- **Current Sprint:** **Sprint 6.3 – Database Persistence**
+- **Status:** Active Development
+- **Last Updated:** 01 July 2026
 
-------------------------------------------------------------------------
+---
 
 # 📊 Current Progress
 
-``` text
-████████████████████████████████░░░░
+```text
+██████████████████████████████████████░░
 
-80% Completed
+88% Completed
 ```
 
-------------------------------------------------------------------------
+---
 
-# 📋 Sprint Summary
+# 🏗 Technology Stack
 
-  Sprint       Status
-  ------------ ----------------
-  Sprint 1     ✅ Completed
-  Sprint 2     ✅ Completed
-  Sprint 3     ✅ Completed
-  Sprint 4     ✅ Completed
-  Sprint 5.1   ✅ Completed
-  Sprint 5.2   ✅ Completed
-  Sprint 5.3   ✅ Completed
-  Sprint 5.4   ✅ Completed
-  Sprint 6     🔄 In Progress
+- Python 3.13
+- Streamlit
+- SQL Server 2022 Express
+- SQLAlchemy ORM
+- PyODBC
+- OpenCV
+- Pandas
+- VS Code
+- Git / GitHub
 
-------------------------------------------------------------------------
+---
 
-# ✅ Sprint 4 -- Computer Vision (Completed)
+# 🏛 Enterprise Architecture
 
--   ✅ ImageProcessor
--   ✅ Image Loading
--   ✅ Image Validation
--   ✅ Image Resize
--   ✅ RGB Conversion
--   ✅ Grayscale Conversion
--   ✅ Gaussian Blur
--   ✅ Edge Detection
--   ✅ Contour Detection
--   ✅ Damage Region Detection
--   ✅ Image Saving
--   ✅ Unit Tests
+```text
+Presentation Layer (Streamlit UI)
+            │
+            ▼
+Service Layer
+            │
+            ▼
+Repository Layer
+            │
+            ▼
+SQLAlchemy ORM
+            │
+            ▼
+SQL Server
 
-------------------------------------------------------------------------
+            │
+            ▼
+AI Pipeline
 
-# ✅ Sprint 5.1 -- Damage Detection
+ImageProcessor
+      │
+DamageDetector
+      │
+CostEstimator
+      │
+FraudDetector
+      │
+AssessmentService
+```
 
--   ✅ DamageDetector
--   ✅ Edge Detection
--   ✅ Contour Detection
--   ✅ Damage Region Analysis
--   ✅ Bounding Box Detection
--   ✅ Severity Classification
--   ✅ Contour Drawing
--   ✅ Unit Tests
+---
 
-------------------------------------------------------------------------
+# ✅ Sprint Status
 
-# ✅ Sprint 5.2 -- Cost Estimation
+| Sprint | Status |
+|---------|--------|
+| Sprint 1 | ✅ Completed |
+| Sprint 2 | ✅ Completed |
+| Sprint 3 | ✅ Completed |
+| Sprint 4 | ✅ Completed |
+| Sprint 5.1 | ✅ Completed |
+| Sprint 5.2 | ✅ Completed |
+| Sprint 5.3 | ✅ Completed |
+| Sprint 5.4 | ✅ Completed |
+| Sprint 6.1 | ✅ Completed |
+| Sprint 6.2 | ✅ Completed |
+| Sprint 6.3 | 🔄 In Progress |
 
--   ✅ CostEstimator
--   ✅ Repair Cost Estimation
--   ✅ Repair Time Estimation
--   ✅ Total Cost Calculation
--   ✅ Unit Tests
+---
 
-------------------------------------------------------------------------
+# ✅ Completed Features
 
-# ✅ Sprint 5.3 -- Fraud Detection
+## Database
 
--   ✅ FraudDetector
--   ✅ Fraud Score Calculation
--   ✅ Risk Level Classification
--   ✅ Rule-Based Fraud Detection
--   ✅ Fraud Reason Generation
--   ✅ Unit Tests
+- ✅ SQL Server Connection
+- ✅ SQLAlchemy Configuration
+- ✅ Customers Table
+- ✅ Vehicles Table
+- ✅ Claims Table
+- ✅ UploadedImages Table
+- ✅ DamageAssessment Table
 
-------------------------------------------------------------------------
+---
 
-# ✅ Sprint 5.4 -- Assessment Service
+## Claim Management
 
--   ✅ AssessmentService
--   ✅ AI Workflow Orchestration
--   ✅ ImageProcessor Integration
--   ✅ DamageDetector Integration
--   ✅ CostEstimator Integration
--   ✅ FraudDetector Integration
--   ✅ Assessment Service Unit Test
+- ✅ Customer Management
+- ✅ Vehicle Management
+- ✅ Claim Creation
+- ✅ Image Upload
+- ✅ Image Storage
 
-------------------------------------------------------------------------
+---
+
+## AI Modules
+
+### ImageProcessor
+
+- ✅ Image Loading
+- ✅ Validation
+- ✅ Resize
+- ✅ RGB Conversion
+- ✅ Grayscale
+- ✅ Gaussian Blur
+- ✅ Image Saving
+
+---
+
+### DamageDetector
+
+- ✅ Edge Detection
+- ✅ Contour Detection
+- ✅ Damage Region Detection
+- ✅ Bounding Boxes
+- ✅ Severity Classification
+- ✅ Damage Labels
+- ✅ Processed Image Generation
+
+---
+
+### CostEstimator
+
+- ✅ Repair Cost Estimation
+- ✅ Repair Time Estimation
+- ✅ Total Cost Calculation
+
+---
+
+### FraudDetector
+
+- ✅ Fraud Score
+- ✅ Risk Level
+- ✅ Recommendation Logic
+
+---
+
+### AssessmentService
+
+- ✅ AI Workflow Orchestration
+- ✅ ImageProcessor Integration
+- ✅ DamageDetector Integration
+- ✅ CostEstimator Integration
+- ✅ FraudDetector Integration
+- ✅ AssessmentResult DTO
+
+---
+
+# ✅ Streamlit UI
+
+## Dashboard
+
+- ✅ Navigation
+
+## Claim Form
+
+- ✅ Customer
+- ✅ Vehicle
+- ✅ Claim Creation
+
+## Image Upload
+
+- ✅ Multiple Image Upload
+- ✅ Preview
+- ✅ Save Images
+- ✅ Run AI Assessment
+
+## Assessment Page
+
+- ✅ Original Image
+- ✅ AI Processed Image
+- ✅ Damage Summary
+- ✅ Estimated Cost
+- ✅ Fraud Score
+- ✅ Risk Level
+- ✅ Damage Table
+- ✅ AI Recommendation Panel
+
+---
 
 # 🤖 Current AI Pipeline
 
-``` text
+```text
 Vehicle Image
       │
       ▼
@@ -121,114 +216,238 @@ FraudDetector
       │
       ▼
 AssessmentService
+      │
+      ▼
+Assessment Dashboard
 ```
 
-------------------------------------------------------------------------
+---
 
 # 🧪 Testing Status
 
-## Completed
+## Passing
 
--   ✅ test_image_processor.py
--   ✅ test_damage_detector.py
--   ✅ test_cost_estimator.py
--   ✅ test_fraud_detector.py
--   ✅ test_assessment_service.py
+- ✅ test_image_processor.py
+- ✅ test_damage_detector.py
+- ✅ test_cost_estimator.py
+- ✅ test_fraud_detector.py
+- ✅ test_assessment_service.py
 
-**Current Status**
+Current Status
 
-``` text
+```text
 5 Tests Passing
+
 0 Tests Failing
 ```
 
-------------------------------------------------------------------------
+---
 
-# 🚀 Current Sprint -- Sprint 6
+# 📌 Current Project Status
 
-## Sprint 6.1
+The application currently supports:
 
--   ✅ Assessment Page Created
--   ✅ AssessmentService Implemented
--   🔄 Integrate AssessmentService with Image Upload
--   🔄 Streamlit Navigation
--   🔄 Display AI Assessment
+✅ Create Claim
 
-## Sprint 6.2
+✅ Upload Images
 
--   ⏳ Display Processed Image
--   ⏳ Damage Highlight Visualization
+✅ AI Damage Detection
 
-## Sprint 6.3
+✅ AI Processed Image Visualization
 
--   ⏳ Save Assessment to DamageAssessment Table
+✅ Repair Cost Estimation
 
-## Sprint 6.4
+✅ Fraud Analysis
 
--   ⏳ Assessment History Screen
+✅ AI Recommendation
 
-------------------------------------------------------------------------
+✅ Professional Assessment Dashboard
 
-# 🎯 Current Workflow
+---
 
-``` text
-Dashboard
-    ↓
-Create Claim
-    ↓
-Upload Images
-    ↓
-Run AI Assessment
-    ↓
-Image Processing
-    ↓
-Damage Detection
-    ↓
-Cost Estimation
-    ↓
-Fraud Detection
-    ↓
-Assessment Summary
+# 🚧 Current Sprint
+
+# Sprint 6.3 — Database Persistence
+
+## Remaining Tasks
+
+- ⏳ DamageAssessmentRepository
+- ⏳ Save AI Assessment to SQL Server
+- ⏳ Duplicate Save Protection
+- ⏳ AssessmentService.save_assessment()
+
+---
+
+# 🚧 Sprint 6.4
+
+Assessment History
+
+- ⏳ Assessment History Page
+- ⏳ View Previous Assessments
+- ⏳ Search by Claim
+- ⏳ Original Image
+- ⏳ Processed Image
+
+---
+
+# 🚧 Sprint 6.5
+
+Dashboard Improvements
+
+- ⏳ Dashboard Statistics
+- ⏳ Total Claims
+- ⏳ Total Assessments
+- ⏳ Fraud Alerts
+- ⏳ Recent Claims
+
+---
+
+# 🚧 Sprint 6.6
+
+Reports
+
+- ⏳ PDF Assessment Report
+- ⏳ Download Assessment
+- ⏳ CSV Export
+
+---
+
+# 🚧 Sprint 7
+
+AI Enhancement
+
+- ⏳ Better Contour Filtering
+- ⏳ Morphological Operations
+- ⏳ Adaptive Thresholding
+- ⏳ Reduce False Positives
+
+Future
+
+- ⏳ YOLO Integration
+- ⏳ Deep Learning Damage Detection
+
+---
+
+# 🎯 Delivery Plan (Next 1 Day)
+
+Priority 1
+
+✅ Save AI Assessment
+
+Priority 2
+
+✅ Assessment History
+
+Priority 3
+
+✅ Dashboard Statistics
+
+Priority 4
+
+✅ PDF Report
+
+Priority 5
+
+✅ Final UI Polish
+
+Priority 6
+
+✅ Final Testing
+
+Priority 7
+
+✅ GitHub Cleanup
+
+Priority 8
+
+✅ README
+
+---
+
+# 📈 Estimated Completion
+
+```text
+Current Progress
+
+88%
+
+Remaining
+
+12%
+
+Estimated Time
+
+1 Day
 ```
 
-------------------------------------------------------------------------
+---
 
-# 📈 Version History
+# 📂 Current Folder Structure
 
-  Version      Description
-  ------------ -----------------------------------------
-  v0.1.0       Database Foundation
-  v0.2.0       Claim Management
-  v0.3.0       Image Upload
-  v0.4.0       Image Processing
-  v0.5.0       Damage Detection
-  v0.6.0       Cost & Fraud Analysis
-  **v0.7.0**   **AI Assessment Integration (Current)**
-  v1.0.0       Production Release (Target)
+```text
+ClaimVision/
 
-------------------------------------------------------------------------
+│
+├── ai/
+│     image_processor.py
+│     damage_detector.py
+│     cost_estimator.py
+│     fraud_detector.py
+│
+├── database/
+│
+├── models/
+│
+├── repositories/
+│
+├── services/
+│
+├── ui/
+│     dashboard.py
+│     claim_form.py
+│     image_upload.py
+│     assessment.py
+│
+├── tests/
+│
+├── uploads/
+│
+├── app.py
+│
+└── requirements.txt
+```
 
-# 🚀 Next Session Plan
+---
 
-1.  Complete `ui/assessment.py`
-2.  Update `ui/image_upload.py`
-3.  Connect `AssessmentService`
-4.  Display processed image with detected damage
-5.  Save AI assessment to the `DamageAssessment` table
-6.  Build Assessment History page
+# 🚀 Next Session Prompt
 
-------------------------------------------------------------------------
+Continue ClaimVision from **Sprint 6.3 – Database Persistence**.
 
-# 📌 Prompt for Next Chat
+Current project status:
 
-> Continue ClaimVision from Sprint 6 -- AI Integration.
->
-> Current status: - Sprint 1--5 completed. - All AI modules implemented
-> and unit tested (ImageProcessor, DamageDetector, CostEstimator,
-> FraudDetector, AssessmentService). - All tests passing. - Working on
-> integrating AssessmentService into the Streamlit UI. - Next task:
-> complete `ui/assessment.py`, update `ui/image_upload.py`, display AI
-> assessment results, then save assessments to the DamageAssessment
-> table.
->
-> Continue as my Technical Lead without repeating previous work.
+- Sprint 1–6.2 completed.
+- Enterprise architecture implemented.
+- AssessmentResult DTO implemented.
+- AI pipeline fully integrated.
+- Assessment dashboard completed.
+- Original and processed images displayed.
+- Damage table implemented.
+- AI recommendation panel completed.
+- All AI unit tests passing.
+- Working on database persistence.
+
+Continue as Technical Lead.
+
+Do not repeat previous work.
+
+Implement:
+
+1. DamageAssessmentRepository
+2. AssessmentService.save_assessment()
+3. Save AI assessment to SQL Server
+4. Duplicate save protection
+5. Assessment History
+6. Dashboard statistics
+7. PDF Assessment Report
+
+Provide complete production-quality code.

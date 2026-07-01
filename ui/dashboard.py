@@ -1,4 +1,5 @@
 import streamlit as st
+from database.repository import ClaimRepository
 
 
 def show_dashboard():
@@ -8,20 +9,45 @@ def show_dashboard():
 
     st.divider()
 
-    # Dashboard Metrics
+    repo = ClaimRepository()
+
+    try:
+
+        total_claims = repo.get_total_claims()
+        total_assessments = repo.get_total_assessments()
+        total_cost = repo.get_total_estimated_cost()
+        avg_fraud = repo.get_average_fraud_score()
+
+    finally:
+
+        repo.close()
+
+
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.metric("Total Claims", "0")
+        st.metric(
+            "Total Claims",
+            total_claims,
+        )
 
     with col2:
-        st.metric("Pending", "0")
+        st.metric(
+            "Assessments",
+            total_assessments,
+        )
 
     with col3:
-        st.metric("Approved", "0")
+        st.metric(
+            "Estimated Cost",
+            f"₹{total_cost:,.0f}",
+        )
 
     with col4:
-        st.metric("Rejected", "0")
+        st.metric(
+            "Avg Fraud Score",
+            avg_fraud,
+        )
 
     st.divider()
 
@@ -35,11 +61,12 @@ def show_dashboard():
             st.rerun()
 
     with col2:
-        st.button(
-            "📂 View Claims",
-            disabled=True,
-            use_container_width=True
-        )
+       if st.button(
+        "📂 Assessment History",
+        use_container_width=True,
+    ):
+        st.session_state["page"] = "assessment_history"
+        st.rerun()
 
     st.divider()
 

@@ -4,6 +4,7 @@ from ui.dashboard import show_dashboard
 from ui.claim_form import show_claim_form
 from ui.image_upload import show_image_upload
 from ui.assessment import show_assessment
+from ui.assessment_history import show_assessment_history
 
 
 st.set_page_config(
@@ -28,3 +29,6 @@ elif st.session_state["page"] == "image_upload":
 
 elif st.session_state["page"] == "assessment":
     show_assessment()
+
+elif st.session_state["page"] == "assessment_history":
+    show_assessment_history()

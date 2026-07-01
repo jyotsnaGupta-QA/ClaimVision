@@ -108,6 +108,7 @@ def show_image_upload():
             use_container_width=True,
         ):
 
+            st.session_state.pop("assessment_saved", None)
             st.session_state.pop("image_saved", None)
             st.session_state["page"] = "dashboard"
             st.rerun()
