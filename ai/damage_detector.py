@@ -97,6 +97,16 @@ class DamageDetector:
                 2,
             )
 
+            cv2.putText(
+                output,
+                f"Damage {damage_id}",
+                (x, max(y - 10, 20)),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.6,
+                (0, 255, 0),
+                2,
+            )
+
             damage_id += 1
 
         return {

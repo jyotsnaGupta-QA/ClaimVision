@@ -3,6 +3,7 @@ import streamlit as st
 from ui.dashboard import show_dashboard
 from ui.claim_form import show_claim_form
 from ui.image_upload import show_image_upload
+from ui.assessment import show_assessment
 
 
 st.set_page_config(
@@ -24,3 +25,6 @@ elif st.session_state["page"] == "claim_form":
 
 elif st.session_state["page"] == "image_upload":
     show_image_upload()
+
+elif st.session_state["page"] == "assessment":
+    show_assessment()
