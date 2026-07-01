@@ -5,7 +5,10 @@ from database.repository import ClaimRepository
 def show_dashboard():
 
     st.title("🚗 ClaimVision")
-    st.caption("AI-Powered Vehicle Damage Assessment & Claim Intelligence")
+
+    st.markdown(
+        "### AI-Powered Vehicle Damage Assessment & Claim Intelligence"
+    )
 
     st.divider()
 
@@ -86,3 +89,9 @@ def show_dashboard():
         • AI Assessment Reports
         """
     )
+
+    st.divider()
+
+st.caption(
+    "🚗 ClaimVision v1.0 | AI-Powered Vehicle Damage Assessment | © 2026"
+)

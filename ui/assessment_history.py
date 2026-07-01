@@ -60,3 +60,9 @@ def show_assessment_history():
 
         st.session_state["page"] = "dashboard"
         st.rerun()
+
+        st.divider()
+
+st.caption(
+    "🚗 ClaimVision v1.0 | AI-Powered Vehicle Damage Assessment | © 2026"
+)

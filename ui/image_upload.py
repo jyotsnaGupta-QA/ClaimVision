@@ -126,3 +126,9 @@ def show_image_upload():
 
             st.session_state["page"] = "claim_form"
             st.rerun()
+
+            st.divider()
+
+st.caption(
+    "🚗 ClaimVision v1.0 | AI-Powered Vehicle Damage Assessment | © 2026"
+)
