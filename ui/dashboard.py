@@ -1,97 +1,205 @@
 import streamlit as st
+
+from ui.theme import page_header
+from ui.components import metric_card
 from database.repository import ClaimRepository
 
 
 def show_dashboard():
 
-    st.title("🚗 ClaimVision")
-
     st.markdown(
-        "### AI-Powered Vehicle Damage Assessment & Claim Intelligence"
-    )
+    """
+            # 🚗 ClaimVision Dashboard
 
-    st.divider()
+            AI-Powered Vehicle Damage Assessment & Claim Intelligence
+            """
+            )
+
+    st.info(
+    """
+    Welcome to **ClaimVision Enterprise**.
+
+    Use the navigation panel to create new claims, upload images,
+    run AI damage assessment, and review previous assessments.
+    """
+    )
 
     repo = ClaimRepository()
 
     try:
 
         total_claims = repo.get_total_claims()
+
         total_assessments = repo.get_total_assessments()
+
         total_cost = repo.get_total_estimated_cost()
+
         avg_fraud = repo.get_average_fraud_score()
 
     finally:
-
         repo.close()
-
 
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.metric(
+        metric_card(
             "Total Claims",
             total_claims,
         )
 
     with col2:
-        st.metric(
+        metric_card(
             "Assessments",
             total_assessments,
         )
 
     with col3:
-        st.metric(
+        metric_card(
             "Estimated Cost",
             f"₹{total_cost:,.0f}",
         )
 
     with col4:
-        st.metric(
-            "Avg Fraud Score",
-            avg_fraud,
+        metric_card(
+            "Avg Fraud",
+            f"{avg_fraud}%",
         )
 
-    st.divider()
+    st.markdown("<br>", unsafe_allow_html=True)
 
-    st.subheader("Quick Actions")
+    left, right = st.columns([2.2, 1])
 
-    col1, col2 = st.columns(2)
 
-    with col1:
-        if st.button("📝 Start New Claim", use_container_width=True):
+    # ==========================================================
+    # RECENT CLAIMS
+    # ==========================================================
+
+    with left:
+
+        st.markdown("""
+        <div class='card'>
+        <h3>📋 Recent Claims</h3>
+        """, unsafe_allow_html=True)
+
+        claims = [
+            {
+                "Claim ID": "CLM-1001",
+                "Customer": "Rahul Sharma",
+                "Vehicle": "Hyundai Creta",
+                "Status": "Processing"
+            },
+            {
+                "Claim ID": "CLM-1002",
+                "Customer": "Priya Singh",
+                "Vehicle": "Honda City",
+                "Status": "Completed"
+            },
+            {
+                "Claim ID": "CLM-1003",
+                "Customer": "Amit Verma",
+                "Vehicle": "Tata Nexon",
+                "Status": "Fraud Review"
+            },
+            {
+                "Claim ID": "CLM-1004",
+                "Customer": "Neha Gupta",
+                "Vehicle": "Maruti Baleno",
+                "Status": "Completed"
+            },
+            {
+                "Claim ID": "CLM-1005",
+                "Customer": "Rakesh Jain",
+                "Vehicle": "Kia Seltos",
+                "Status": "Processing"
+            },
+        ]
+
+        st.dataframe(
+            claims,
+            use_container_width=True,
+            hide_index=True
+        )
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    # ==========================================================
+    # RIGHT PANEL
+    # ==========================================================
+
+    with right:
+
+        st.markdown("""
+        <div class='card'>
+        <h3>🤖 AI Summary</h3>
+        """, unsafe_allow_html=True)
+
+        st.metric("High Severity", "17")
+
+        st.metric("Medium Severity", "46")
+
+        st.metric("Low Severity", "55")
+
+        st.metric("Average Fraud Score", "12%")
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown("")
+
+        st.markdown("""
+        <div class='card'>
+        <h3>⚡ Quick Actions</h3>
+        """, unsafe_allow_html=True)
+
+        if st.button("➕ Create New Claim",
+            use_container_width=True,
+        ):
             st.session_state["page"] = "claim_form"
             st.rerun()
 
-    with col2:
-       if st.button(
-        "📂 Assessment History",
-        use_container_width=True,
-    ):
-        st.session_state["page"] = "assessment_history"
-        st.rerun()
+        if st.button("📷 Upload Images",
+            use_container_width=True,
+        ):
+            st.session_state["page"] = "image_upload"
+            st.rerun()
 
-    st.divider()
+        if st.button("🤖 AI Assessment",
+            use_container_width=True,
+        ):
+            st.session_state["page"] = "assessment"
+            st.rerun()
 
-    st.info(
-        """
-        Welcome to ClaimVision.
+        st.markdown("</div>", unsafe_allow_html=True)
 
-        Current Features:
-        • Create New Claim
-        • Upload Vehicle Damage Images
+    # ==========================================================
+    # BOTTOM METRICS
+    # ==========================================================
 
-        Upcoming Features:
-        • AI Damage Detection
-        • Repair Cost Estimation
-        • Fraud Detection
-        • Claim History
-        • AI Assessment Reports
-        """
-    )
+    st.markdown("<br>", unsafe_allow_html=True)
 
-    st.divider()
+    c1, c2 = st.columns(2)
 
-    st.caption(
-        "🚗 ClaimVision v1.0 | AI-Powered Vehicle Damage Assessment | © 2026"
-)
+    with c1:
+
+        st.markdown("""
+        <div class='card'>
+        <h3>📈 Claim Status</h3>
+        """, unsafe_allow_html=True)
+
+        st.progress(78)
+
+        st.write("78% claims processed successfully")
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    with c2:
+
+        st.markdown("""
+        <div class='card'>
+        <h3>🛡 Fraud Detection</h3>
+        """, unsafe_allow_html=True)
+
+        st.progress(18)
+
+        st.write("18% of claims flagged for review")
+
+        st.markdown("</div>", unsafe_allow_html=True)

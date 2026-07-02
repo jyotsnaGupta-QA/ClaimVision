@@ -38,7 +38,7 @@ class DamageDetector:
     def analyze_damage(
         self,
         image,
-        min_area=500,
+        min_area=100,
     ):
         """
         Analyze detected contours and classify
@@ -108,6 +108,36 @@ class DamageDetector:
             )
 
             damage_id += 1
+
+        # --------------------------------------------------
+        # Fallback when no damage is detected
+        # --------------------------------------------------
+
+        if not damages:
+
+            h, w = output.shape[:2]
+
+            damages.append(
+                {
+                    "damage_id": 1,
+                    "x": 0,
+                    "y": 0,
+                    "width": w,
+                    "height": h,
+                    "area": 0,
+                    "severity": "Low",
+                }
+            )
+
+            cv2.putText(
+                output,
+                "No Significant Damage Detected",
+                (20, 40),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.8,
+                (0, 255, 255),
+                2,
+            )
 
         return {
             "processed_image": output,

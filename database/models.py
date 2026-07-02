@@ -11,6 +11,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship
 
 from database.db import Base
+from sqlalchemy import Date
 
 
 class Customer(Base):
@@ -50,7 +51,7 @@ class Claim(Base):
     CustomerId = Column(Integer, ForeignKey("Customers.CustomerId"))
     VehicleId = Column(Integer, ForeignKey("Vehicle.VehicleId"))
 
-    AccidentDate = Column(DateTime)
+    AccidentDate = Column(Date)
     AccidentLocation = Column(NVARCHAR(200))
     Description = Column(NVARCHAR(500))
 

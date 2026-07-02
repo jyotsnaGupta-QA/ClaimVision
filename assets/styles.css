@@ -1,0 +1,332 @@
+/* ==========================
+   CLAIMVISION ENTERPRISE UI
+========================== */
+
+:root {
+    --primary: #2563EB;
+    --success: #16A34A;
+    --warning: #F59E0B;
+    --danger: #DC2626;
+
+    --background: #F8FAFC;
+    --card: #FFFFFF;
+    --border: #E5E7EB;
+
+    --text: #1F2937;
+    --subtext: #6B7280;
+}
+
+/* Main App */
+
+.stApp {
+    background: var(--background);
+}
+
+/* Remove Streamlit Menu */
+
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+header {
+    visibility: hidden;
+}
+
+/* Sidebar */
+
+section[data-testid="stSidebar"] {
+    background: #1E293B;
+}
+
+section[data-testid="stSidebar"] * {
+    color: white;
+}
+
+/* Page Title */
+
+.page-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 5px;
+}
+
+.page-subtitle {
+    color: var(--subtext);
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+/* Cards */
+
+.card {
+
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, .05);
+
+    margin-bottom: 20px;
+}
+
+/* Metric Cards */
+
+.metric-card {
+
+    background: white;
+
+    border-left: 6px solid var(--primary);
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+
+.metric-title {
+
+    color: #64748B;
+
+    font-size: 15px;
+}
+
+.metric-value {
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    color: #111827;
+}
+
+/* Buttons */
+
+.stButton>button {
+
+    width: 100%;
+
+    background: var(--primary);
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 10px;
+
+    font-weight: 600;
+}
+
+.stButton>button:hover {
+
+    background: #1D4ED8;
+}
+
+/* Inputs */
+
+.stTextInput input,
+.stTextArea textarea,
+.stSelectbox div[data-baseweb="select"] {
+
+    border-radius: 8px;
+}
+
+/* Tables */
+
+table {
+
+    border-radius: 8px;
+}
+
+/* Images */
+
+img {
+
+    border-radius: 10px;
+}
+
+/* Upload Preview */
+
+.upload-card {
+
+    background: white;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    border: 1px solid #E5E7EB;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .05);
+
+    margin-top: 10px;
+}
+
+/* Images */
+
+.stImage img {
+
+    border-radius: 12px;
+
+    border: 1px solid #E5E7EB;
+}
+
+/* Progress */
+
+.stProgress>div>div>div {
+
+    background: #2563EB;
+}
+
+/* ===========================================================
+   ENTERPRISE PAGE HEADER
+=========================================================== */
+
+.cv-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: linear-gradient(135deg,
+            #2563EB,
+            #1D4ED8);
+
+    padding: 28px;
+
+    border-radius: 18px;
+
+    margin-bottom: 30px;
+
+    box-shadow:
+        0 8px 24px rgba(37, 99, 235, .20);
+
+    color: white;
+}
+
+.cv-title {
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+}
+
+.cv-subtitle {
+
+    font-size: 15px;
+
+    opacity: .92;
+}
+
+.cv-header-right {
+
+    text-align: right;
+}
+
+.cv-version {
+
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+.cv-version-no {
+
+    font-size: 14px;
+
+    opacity: .85;
+}
+
+/* ===========================================================
+   CARD ANIMATION
+=========================================================== */
+
+.metric-card {
+
+    transition: all .25s ease;
+}
+
+.metric-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, .10);
+}
+
+.card {
+
+    transition: all .25s ease;
+}
+
+.card:hover {
+
+    box-shadow:
+        0 12px 26px rgba(0, 0, 0, .08);
+}
+
+/* ===========================================================
+   DATAFRAME
+=========================================================== */
+
+.stDataFrame {
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+/* ===========================================================
+   BUTTONS
+=========================================================== */
+
+.stButton>button {
+
+    height: 46px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    border-radius: 10px;
+}
+
+/* ===========================================================
+   INPUTS
+=========================================================== */
+
+.stTextInput input,
+.stSelectbox,
+.stTextArea textarea {
+
+    border-radius: 10px;
+}
+
+/* ===========================================================
+   PAGE SPACING
+=========================================================== */
+
+.block-container {
+
+    padding-top: 2rem;
+
+    padding-bottom: 2rem;
+
+    max-width: 1400px;
+}

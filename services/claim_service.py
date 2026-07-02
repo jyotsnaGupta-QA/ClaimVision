@@ -1,6 +1,8 @@
 import os
 import uuid
 
+from datetime import datetime
+
 from database.models import Customer, Vehicle, Claim
 from database.repository import ClaimRepository
 
@@ -62,6 +64,12 @@ class ClaimService:
     ):
 
         try:
+
+            if not isinstance(accident_date, datetime):
+                accident_date = datetime.combine(
+                    accident_date,
+                    datetime.min.time()
+                )
 
             customer = Customer(
                 FullName=customer_name,

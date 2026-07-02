@@ -38,6 +38,15 @@ class ClaimRepository:
 
         return claim
     
+    def get_uploaded_images(self, claim_id):
+
+        return (
+            self.db.query(UploadedImage)
+            .filter(UploadedImage.ClaimId == claim_id)
+            .order_by(UploadedImage.UploadedDate.desc())
+            .all()
+        )
+    
     def create_uploaded_image(self, claim_id, image_path):
         image = UploadedImage(
             ClaimId=claim_id,
@@ -57,15 +66,6 @@ class ClaimRepository:
         self.db.refresh(assessment)
 
         return assessment
-
-
-    def get_damage_assessments(self, claim_id):
-
-        return (
-            self.db.query(DamageAssessment)
-            .filter(DamageAssessment.ClaimId == claim_id)
-            .all()
-        )
     
    
     def get_damage_assessments(self, claim_id):
