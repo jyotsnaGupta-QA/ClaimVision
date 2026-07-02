@@ -81,38 +81,12 @@ def show_dashboard():
         <h3>📋 Recent Claims</h3>
         """, unsafe_allow_html=True)
 
-        claims = [
-            {
-                "Claim ID": "CLM-1001",
-                "Customer": "Rahul Sharma",
-                "Vehicle": "Hyundai Creta",
-                "Status": "Processing"
-            },
-            {
-                "Claim ID": "CLM-1002",
-                "Customer": "Priya Singh",
-                "Vehicle": "Honda City",
-                "Status": "Completed"
-            },
-            {
-                "Claim ID": "CLM-1003",
-                "Customer": "Amit Verma",
-                "Vehicle": "Tata Nexon",
-                "Status": "Fraud Review"
-            },
-            {
-                "Claim ID": "CLM-1004",
-                "Customer": "Neha Gupta",
-                "Vehicle": "Maruti Baleno",
-                "Status": "Completed"
-            },
-            {
-                "Claim ID": "CLM-1005",
-                "Customer": "Rakesh Jain",
-                "Vehicle": "Kia Seltos",
-                "Status": "Processing"
-            },
-        ]
+        repo = ClaimRepository()
+
+        try:
+            claims = repo.get_recent_claims()
+        finally:
+            repo.close()
 
         st.dataframe(
             claims,
@@ -133,13 +107,20 @@ def show_dashboard():
         <h3>🤖 AI Summary</h3>
         """, unsafe_allow_html=True)
 
-        st.metric("High Severity", "17")
+        repo = ClaimRepository()
 
-        st.metric("Medium Severity", "46")
+        try:
 
-        st.metric("Low Severity", "55")
+            summary = repo.get_ai_summary()
 
-        st.metric("Average Fraud Score", "12%")
+        finally:
+
+            repo.close()
+
+        st.metric("High Severity", summary["high"])
+        st.metric("Medium Severity", summary["medium"])
+        st.metric("Low Severity", summary["low"])
+        st.metric("Average Fraud Score", f'{summary["fraud"]}%')
 
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -185,10 +166,19 @@ def show_dashboard():
         <h3>📈 Claim Status</h3>
         """, unsafe_allow_html=True)
 
-        st.progress(78)
+        repo = ClaimRepository()
 
-        st.write("78% claims processed successfully")
+        try:
+            status = repo.get_claim_status_summary()
+        finally:
+            repo.close()
 
+        st.progress(status["completed"] / 100)
+
+        st.write(
+            f'{status["completed"]}% claims processed successfully'
+        )
+      
         st.markdown("</div>", unsafe_allow_html=True)
 
     with c2:
@@ -197,9 +187,9 @@ def show_dashboard():
         <div class='card'>
         <h3>🛡 Fraud Detection</h3>
         """, unsafe_allow_html=True)
+        st.progress(summary["fraud"] / 100)
 
-        st.progress(18)
-
-        st.write("18% of claims flagged for review")
-
+        st.write(
+            f'{summary["fraud"]}% claims flagged for review'
+        )
         st.markdown("</div>", unsafe_allow_html=True)

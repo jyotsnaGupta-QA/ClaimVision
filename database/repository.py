@@ -123,6 +123,84 @@ class ClaimRepository:
             total / len(assessments),
             2,
         )
+    def get_recent_claims(self):
+
+        claims = (
+            self.db.query(Claim, Customer, Vehicle)
+            .join(Customer, Claim.CustomerId == Customer.CustomerId)
+            .join(Vehicle, Claim.VehicleId == Vehicle.VehicleId)
+            .order_by(Claim.CreatedDate.desc())
+            .limit(5)
+            .all()
+        )
+
+        rows = []
+
+        for claim, customer, vehicle in claims:
+
+            rows.append(
+                {
+                    "Claim ID": claim.ClaimId,
+                    "Customer": customer.FullName,
+                    "Vehicle": f"{vehicle.VehicleBrand} {vehicle.VehicleModel}",
+                    "Status": claim.Status,
+                }
+            )
+
+        return rows
+    
+    def get_ai_summary(self):
+
+        assessments = self.db.query(DamageAssessment).all()
+
+        high = 0
+        medium = 0
+        low = 0
+        fraud = []
+
+        for a in assessments:
+
+            severity = (a.Severity or "").lower()
+
+            if severity == "high":
+                high += 1
+
+            elif severity == "medium":
+                medium += 1
+
+            else:
+                low += 1
+
+            fraud.append(float(a.FraudScore or 0))
+
+        avg_fraud = round(sum(fraud) / len(fraud), 2) if fraud else 0
+
+        return {
+            "high": high,
+            "medium": medium,
+            "low": low,
+            "fraud": avg_fraud,
+        }
+    
+    def get_claim_status_summary(self):
+
+        total = self.db.query(Claim).count()
+
+        if total == 0:
+
+            return {
+                "completed": 0,
+            }
+
+        completed = (
+            self.db.query(Claim)
+            .filter(Claim.Status == "Completed")
+            .count()
+        )
+
+        return {
+            "completed": round(completed * 100 / total),
+        }
 
     def close(self):
         self.db.close()
