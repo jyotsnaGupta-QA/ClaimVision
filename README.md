@@ -8,6 +8,21 @@ The application follows a layered architecture with separate UI, Service, Reposi
 
 ---
 
+## 🌟 Highlights
+
+- Enterprise Layered Architecture
+- Repository Pattern
+- SQLAlchemy ORM
+- SQL Server Integration
+- OpenCV Image Processing
+- AI Damage Assessment
+- Repair Cost Estimation
+- Fraud Detection
+- PDF Report Generation
+- SQL-driven Dashboard
+
+---
+
 ## ✨ Features
 
 ### Claim Management
@@ -154,7 +169,7 @@ ClaimVision/
 ## 🗄 Database Tables
 
 - Customers
-- Vehicles
+- Vehicle
 - Claims
 - UploadedImages
 - DamageAssessment
@@ -177,7 +192,7 @@ ClaimVision/
 
 ### Upload Vehicle Images
 
-*![Upload Images](docs/upload_images.png)
+![Upload Images](docs/upload_images.png)
 
 ---
 
@@ -199,12 +214,21 @@ ClaimVision/
 ![PDF Report](docs/pdf_report.png)
 ---
 
+## 📋 Prerequisites
+
+- Python 3.13+
+- SQL Server 2022 Express
+- SQL Server Management Studio (SSMS)
+- Git
+
+---
+
 ## ⚙ Installation
 
 Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/ClaimVision.git
+git clone https://github.com/jyotsnaGupta-QA/ClaimVision.git
 ```
 
 Create a virtual environment

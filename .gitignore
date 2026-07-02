@@ -26,3 +26,22 @@ uploads/*
 
 # Generated edge detection images
 sample_data/edges_*.jpg
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Coverage
+.coverage
+htmlcov/
+
+# Distribution
+dist/
+build/
+*.egg-info/
+
+# IDE
+.idea/
+
+# Generated PDFs
+*.pdf
